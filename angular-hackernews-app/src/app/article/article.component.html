@@ -1,8 +1,18 @@
-<h2>Today's article</h2>
 <hr>
-<div *ngFor="let art of articles">
-  <a href="{{art.url}}" target="_blank">{{art.title}}</a>: <app-like></app-like>
-</div>
+<table class="table" >
+  <thead>
+  <tr>
+    <th scope="col">Name</th>
+    <th scope="col">Likes</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let art of articles">
+    <td><a href="{{art.url}}" target="_blank">{{art.title}}</a>:</td>
+    <td><app-like></app-like></td>
+  </tr>
+  </tbody>
+</table>
 <div>
   <h2>Article Information</h2>
   <table>
@@ -19,7 +29,7 @@
     <tr>
       <td></td>
       <td>
-        <button style="float: right" (click)="addNewArticle()">Add</button>
+        <button style="float: right" class="btn-dark btn" (click)="addNewArticle()">Add</button>
       </td>
     </tr>
   </table>

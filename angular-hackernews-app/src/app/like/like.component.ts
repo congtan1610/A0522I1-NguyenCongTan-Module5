@@ -7,7 +7,6 @@ import {Component, OnInit} from '@angular/core';
 })
 export class LikeComponent implements OnInit {
   like = 0;
-
   constructor() {
   }
 
