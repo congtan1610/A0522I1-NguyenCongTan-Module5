@@ -1,5 +1,5 @@
-<p>calculator </p>
-<input class="" type="text" #a/>
+<p>calculator</p>
+<input  type="text" #a/>
 <select #c>
   <option>+</option>
   <option>-</option>
@@ -7,4 +7,5 @@
   <option>/</option>
 </select>
 <input type="text" #b/>
-<button class="btn-dark btn">sa</button>
+<button class="btn-dark btn"  (click)="cal(a.value,b.value,c.value)">Cal</button>
+<p >Result: {{cal(a.value,b.value,c.value)}}</p>
