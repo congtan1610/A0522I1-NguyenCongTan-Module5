@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "AllExercise"
+  "defaultProject": "AllExercise",
+  "cli": {
+    "analytics": "729b2965-1c40-4099-9e75-03d62185d7c5"
+  }
 }
