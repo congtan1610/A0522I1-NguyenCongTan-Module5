@@ -1,0 +1,35 @@
+a {
+  text-decoration: none;
+  color: black;
+}
+.item {
+  float: left;
+  margin-left: 1.6%;
+  margin-bottom: 2%;
+  width: 23%;
+  background-color: whitesmoke;
+  position: relative;
+}
+.list {
+  margin-left: 5%;
+  width: 90%;
+  height: 900px;
+  margin-top: 10px;
+}
+
+.item:hover .btn-hi {
+  display: block;
+}
+.btn-hi {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  width: 100%;
+}
+.btn-ho {
+  border-radius: 50%;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
