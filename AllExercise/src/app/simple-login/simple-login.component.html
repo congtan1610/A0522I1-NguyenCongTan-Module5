@@ -1,0 +1,20 @@
+<form [formGroup]="formLogin" (ngSubmit)="login(formLogin)" style="width: 40%" class="container">
+  <p class="text-lg-center fw-bold">Login</p>
+  <div class="mb-3">
+    <label class="form-label">Email </label>
+    <span style="color: red" *ngIf="formLogin.controls.email.hasError('email')&&formLogin.controls.email.touched">(Email invalidate)</span>
+    <span style="color: red" *ngIf="formLogin.controls.email.hasError('required')&&formLogin.controls.email.touched">(Not blank)</span>
+    <input formControlName="email" type="email" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Password</label>
+    <span style="color: red"
+          *ngIf="formLogin.controls.password.hasError('required')&&formLogin.controls.password.touched">(Not blank)</span>
+    <span style="color: red"
+          *ngIf="formLogin.controls.password.hasError('minlength')&&formLogin.controls.password.touched">(Password must have at least 6 characters)</span>
+    <input formControlName="password" type="password" class="form-control">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<span *ngFor="let i of arr">Email: {{i.email}}<br>
+                            Password: {{i.password}}<br></span>

@@ -1,0 +1,77 @@
+<form [formGroup]="formRegister" (ngSubmit)="addRegister(formRegister)" style="width: 40%" class="container">
+  <p class="text-lg-center fw-bold">Register</p>
+  <div class="mb-3">
+    <label class="form-label">Email address</label>
+    <span style="color: red" *ngIf="formRegister.controls.email.hasError('email')&&formRegister.controls.email.touched">(Email invalidate)</span>
+    <span style="color: red" *ngIf="formRegister.controls.email.hasError('required')&&formRegister.controls.email.touched">(Not blank)</span>
+    <input formControlName="email" type="email" class="form-control">
+  </div>
+  <div class="mb-3" >
+    <label class="form-label">Password</label>
+    <span style="color: red" *ngIf="formRegister.controls.password.hasError('required')&&formRegister.controls.password.touched">(Not blank)</span>
+    <span style="color: red" *ngIf="formRegister.controls.password.hasError('minlength')&&formRegister.controls.password.touched">(Password must have at least 6 characters)</span>
+    <input formControlName="password" type="password" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Confirm Password</label>
+    <span style="color: red" *ngIf="formRegister.hasError('passConfirmError')&&formRegister.controls.confirmPass.touched">
+does not match the password</span>
+    <input formControlName="confirmPass" type="password" class="form-control">
+  </div>
+  <label class="form-label">Country</label>
+  <span style="color: red" *ngIf="formRegister.controls.country.hasError('required')&&formRegister.controls.country.touched">(Not blank)</span>
+  <select class="form-select" formControlName="country">
+    <option ></option>
+    <option *ngFor="let i of countrys">{{i}}</option>
+  </select>
+  <div class="mb-3">
+    <label class="form-label">Age</label>
+    <span style="color: red" *ngIf="formRegister.controls.age.hasError('required')&&formRegister.controls.age.touched">(Not blank)</span>
+    <span style="color: red" *ngIf="formRegister.controls.age.hasError('min')&&formRegister.controls.age.touched">(cannot be less than 18)</span>
+    <input formControlName="age" type="number" class="form-control">
+  </div>
+  <label class="form-label">Gender</label>
+  <span style="color: red" *ngIf="formRegister.controls.gender.hasError('required')">(Not blank)</span>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" [value]="1" formControlName="gender" name="gender">
+    <label class="form-check-label">Male</label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" [value]="0" formControlName="gender" name="gender">
+    <label class="form-check-label">Female</label>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Phone Number</label>
+    <span style="color: red" *ngIf="formRegister.controls.phone.hasError('required')&&formRegister.controls.phone.touched">(Not blank)</span>
+    <span style="color: red" *ngIf="formRegister.controls.phone.hasError('pattern')&&formRegister.controls.phone.touched">(wrong format)</span>
+    <input formControlName="phone" type="number" class="form-control">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<div>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">Email</th>
+      <th scope="col">Password</th>
+      <th scope="col">Country</th>
+      <th scope="col">Age</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Phone</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let register of registers, index as i">
+      <td>{{i}}</td>
+      <td>{{register.email}}</td>
+      <td>{{register.password}}</td>
+      <td>{{register.country}}</td>
+      <td>{{register.age}}</td>
+      <td *ngIf="register.gender==1">Male</td>
+      <td *ngIf="register.gender==0">Female</td>
+      <td>{{register.phone}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
