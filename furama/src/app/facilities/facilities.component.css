@@ -13,8 +13,8 @@ a {
 .list {
   margin-left: 5%;
   width: 90%;
-  height: 900px;
   margin-top: 10px;
+  overflow-y: hidden;
 }
 
 .item:hover .btn-hi {

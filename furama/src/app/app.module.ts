@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NagivationComponent } from './nagivation/nagivation.component';
 import { FacilitiesComponent } from './facilities/facilities.component';
+import { EditFacilitiesComponent } from './edit-facilities/edit-facilities.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { FacilitiesComponent } from './facilities/facilities.component';
     HeaderComponent,
     FooterComponent,
     NagivationComponent,
-    FacilitiesComponent
+    FacilitiesComponent,
+    EditFacilitiesComponent
   ],
   imports: [
     BrowserModule,
@@ -23,4 +25,5 @@ import { FacilitiesComponent } from './facilities/facilities.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

@@ -19,6 +19,4 @@ export class TimelinesComponent implements OnInit {
   onChange(value) {
     this.output = this.dateUtilService.getDiffToNow(value);
   }
-
-
 }
