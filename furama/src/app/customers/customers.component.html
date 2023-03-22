@@ -1,0 +1,95 @@
+<div class="content">
+  <p style="font-size: larger;"><b>List Customer</b></p>
+  <form style="float: left;margin-left: 20px">
+    <input name="nameCustomer" type="text" placeholder="enter your name"/>
+    <input type="submit" class="btn btn-primary" role="button" aria-disabled="true" value="Search"/>
+  </form>
+  <a class="btn btn-primary" role="button" aria-disabled="true"
+     style="float: right;margin-right: 20px;margin-bottom: 10px">Add New</a>
+  <table class="table table-striped">
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Customer Type</th>
+      <th>Date Of Birth</th>
+      <th>Gender</th>
+      <th>Id Card</th>
+      <th>Phone Number</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Action</th>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>
+        <p>Nam</p>
+        <p>Nữ</p>
+      </td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#DetailModal"
+                id="detail" onclick="detailCus(this.value)">Detail
+        </button>
+        <a class="btn btn-primary" role="button"
+           aria-disabled="true">Edit</a>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                id="btn_del" onclick="deleteCus(this.value)">Delete
+        </button>
+      </td>
+    </tr>
+  </table>
+  <!--    phan trang-->
+    <div style="margin-top: 50px">
+      <a class="btn btn-primary btn-sm" role="button" aria-disabled="true">Previous</a>
+      <span>
+        <a class="btn btn-primary btn-sm" role="button" aria-disabled="true">1</a>
+      </span>
+      <a class="btn btn-primary btn-sm" role="button" aria-disabled="true">Next</a>
+    </div>
+</div>
+
+<!-- Modal Delete-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Customer</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <b id="result"></b>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="del" onclick="del(this.value)">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Detail-->
+<div class="modal fade" id="DetailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="DetailModalLabel">Customer</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table id="resultDetail">
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
