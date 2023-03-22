@@ -7,13 +7,19 @@ import { NameCardComponent } from './name-card/name-card.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { TodoComponent } from './todo/todo.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { TimelinesComponent } from './timelines/timelines.component';
+import { YoutubePlaylistComponent } from './youtube-playlist/youtube-playlist.component';
+import { YoutubePlayerComponent } from './youtube-player/youtube-player.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NameCardComponent,
     ProgressBarComponent,
-    TodoComponent
+    TodoComponent,
+    TimelinesComponent,
+    YoutubePlaylistComponent,
+    YoutubePlayerComponent
   ],
     imports: [
         BrowserModule,
