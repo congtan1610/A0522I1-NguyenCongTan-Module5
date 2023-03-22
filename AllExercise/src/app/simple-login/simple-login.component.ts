@@ -9,7 +9,11 @@ import {Login} from "../login";
 })
 export class SimpleLoginComponent implements OnInit {
   formLogin: FormGroup;
-  arr:Array<Login>=[];
+  arr: Array<Login> = [];
+  acc: Login = {email: 'admin@gmail.com', password: 'admin1'};
+  acc_check: Login;
+  loginError: boolean;
+
   constructor() {
     this.formLogin = new FormGroup({
         email: new FormControl('', [Validators.email, Validators.required]),
@@ -24,8 +28,11 @@ export class SimpleLoginComponent implements OnInit {
   }
 
   login(formLogin: FormGroup) {
-    if (this.formLogin.valid){
-     this.arr.push(formLogin.value);
+    if (this.formLogin.valid) {
+      this.acc_check = formLogin.value;
+      if (this.acc.email === this.acc_check.email && this.acc_check.password === this.acc.password) {
+        this.loginError = false;
+      } else this.loginError = true;
     }
   }
 }

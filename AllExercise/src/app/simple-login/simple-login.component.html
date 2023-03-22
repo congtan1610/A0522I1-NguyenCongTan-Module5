@@ -1,5 +1,6 @@
 <form [formGroup]="formLogin" (ngSubmit)="login(formLogin)" style="width: 40%" class="container">
   <p class="text-lg-center fw-bold">Login</p>
+  <b>Hint(email:admin@gmail.com,password:admin1)</b>
   <div class="mb-3">
     <label class="form-label">Email </label>
     <span style="color: red" *ngIf="formLogin.controls.email.hasError('email')&&formLogin.controls.email.touched">(Email invalidate)</span>
@@ -16,5 +17,5 @@
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-<span *ngFor="let i of arr">Email: {{i.email}}<br>
-                            Password: {{i.password}}<br></span>
+<span *ngIf="loginError===true">Login Failed</span>
+<span *ngIf="loginError===false">Login Success</span>
