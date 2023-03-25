@@ -8,6 +8,8 @@ import { CountdownTimerComponent } from './countdown-timer/countdown-timer.compo
 import { RegisterComponent } from './register/register.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { SimpleLoginComponent } from './simple-login/simple-login.component';
+import { DictionaryPageComponent } from './dictionary-page/dictionary-page.component';
+import { DictionaryDetailComponent } from './dictionary-detail/dictionary-detail.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { SimpleLoginComponent } from './simple-login/simple-login.component';
     RatingBarComponentComponent,
     CountdownTimerComponent,
     RegisterComponent,
-    SimpleLoginComponent
+    SimpleLoginComponent,
+    DictionaryPageComponent,
+    DictionaryDetailComponent
   ],
   imports: [
     BrowserModule,
