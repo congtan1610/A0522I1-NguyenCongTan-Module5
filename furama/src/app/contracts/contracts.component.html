@@ -1,31 +1,18 @@
 <div class="content">
-  <p style="font-size: larger;"><b>List Customer</b></p>
-  <form style="float: left;margin-left: 20px">
-    <input name="nameCustomer" type="text" placeholder="enter your name"/>
-    <input type="submit" class="btn btn-primary" role="button" aria-disabled="true" value="Search"/>
-  </form>
+  <p style="font-size: larger;"><b>List Contract</b></p>
   <a class="btn btn-primary" role="button" aria-disabled="true"
-     style="float: right;margin-right: 20px;margin-bottom: 10px" routerLink="/createCustomer">Add New</a>
+     style="float: right;margin-right: 20px;margin-bottom: 10px" routerLink="/createContract" >Add New</a>
   <table class="table table-striped">
     <tr>
-      <th>Id</th>
-      <th>Name</th>
-      <th>Customer Type</th>
-      <th>Date Of Birth</th>
-      <th>Gender</th>
-      <th>Id Card</th>
-      <th>Phone Number</th>
-      <th>Email</th>
-      <th>Address</th>
-      <th>Action</th>
+      <th>No</th>
+      <th>Start Day</th>
+      <th>End Day</th>
+      <th>Deposit</th>
+      <th>Total</th>
+      <th></th>
     </tr>
     <tr>
       <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>
-      </td>
       <td></td>
       <td></td>
       <td></td>
@@ -35,7 +22,7 @@
                 id="detail" onclick="detailCus(this.value)">Detail
         </button>
         <a class="btn btn-outline-success btn-sm" role="button"
-           aria-disabled="true" routerLink="/updateCustomer">Edit</a>
+           aria-disabled="true" >Edit</a>
         <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"
                 id="btn_del" onclick="deleteCus(this.value)">Delete
         </button>
@@ -43,13 +30,13 @@
     </tr>
   </table>
   <!--    phan trang-->
-    <div style="margin-top: 50px">
-      <a class="btn btn-primary btn-sm" role="button" aria-disabled="true">Previous</a>
-      <span>
+  <div style="margin-top: 50px">
+    <a class="btn btn-primary btn-sm" role="button" aria-disabled="true">Previous</a>
+    <span>
         <a class="btn btn-primary btn-sm" role="button" aria-disabled="true">1</a>
       </span>
-      <a class="btn btn-primary btn-sm" role="button" aria-disabled="true">Next</a>
-    </div>
+    <a class="btn btn-primary btn-sm" role="button" aria-disabled="true">Next</a>
+  </div>
 </div>
 
 <!-- Modal Delete-->
@@ -57,7 +44,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Customer</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Contract</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -78,7 +65,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="DetailModalLabel">Customer</h1>
+        <h1 class="modal-title fs-5" id="DetailModalLabel">Contract</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
