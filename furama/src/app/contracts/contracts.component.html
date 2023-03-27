@@ -11,12 +11,12 @@
       <th>Total</th>
       <th></th>
     </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+    <tr *ngFor="let contract of contracts,let i=index">
+      <td>{{i+1}}</td>
+      <td>{{contract.startDay}}</td>
+      <td>{{contract.endDay}}</td>
+      <td>{{contract.deposit}}</td>
+      <td>{{contract.total}}</td>
       <td>
         <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#DetailModal"
                 id="detail" onclick="detailCus(this.value)">Detail

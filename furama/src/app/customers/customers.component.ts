@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Customer} from "../model/customer";
+import {CustomerService} from "../service/customer.service";
 
 @Component({
   selector: 'app-customers',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./customers.component.css']
 })
 export class CustomersComponent implements OnInit {
-
-  constructor() { }
-
+  customers:Array<Customer>=[];
+  constructor(private customerService:CustomerService) {
+    this.customers=this.customerService.getAll();
+  }
   ngOnInit(): void {
   }
-
+  finById(id:number):Customer{
+    return this.customers.filter(customer=>customer.id==id)[0];
+  }
+  deleteById(id: number) {
+    this.customers.splice(this.customers.indexOf(this.finById(id)),1);
+  }
 }
