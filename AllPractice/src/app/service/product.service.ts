@@ -8,7 +8,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class ProductService {
   products: Product[];
-
+  categorys:string[]=['Apple','Samsung'];
   constructor( private httpClient:HttpClient) {
   }
 

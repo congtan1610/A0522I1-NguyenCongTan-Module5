@@ -1,7 +1,7 @@
 <h1>Tạo sản phẩm mới</h1>
 <form [formGroup]="productForm" (ngSubmit)="submit()">
   <table>
-    <tr>
+    <tr hidden>
       <td>Mã sản phẩm:</td>
       <td><input type="number" formControlName="id"></td>
     </tr>
@@ -18,8 +18,16 @@
       <td><input type="text" formControlName="description"></td>
     </tr>
     <tr>
+      <td>Hãng</td>
+      <td>
+        <select formControlName="category">
+          <option *ngFor="let cate of categorys" [value]="cate">{{cate}}</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
       <td></td>
-      <td><button>Tạo mới</button></td>
+      <td><button type="submit">Tạo mới</button></td>
     </tr>
   </table>
 </form>

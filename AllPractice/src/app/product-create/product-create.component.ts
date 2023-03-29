@@ -14,9 +14,11 @@ export class ProductCreateComponent implements OnInit {
     name: new FormControl(),
     price: new FormControl(),
     description: new FormControl(),
+    category:new FormControl()
   });
-
+  categorys:string[];
   constructor(private productService: ProductService, private route: Router) {
+   this.categorys= this.productService.categorys;
   }
 
   ngOnInit(): void {

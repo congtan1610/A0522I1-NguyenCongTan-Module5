@@ -14,8 +14,9 @@ export class ProductUpdateComponent implements OnInit {
     name: new FormControl(),
     price: new FormControl(),
     description: new FormControl(),
+    category:new FormControl()
   });
-
+categorys:string[];
   constructor(private productService: ProductService, private  activatedRoute: ActivatedRoute,private route:Router) {
     this.activatedRoute.paramMap.subscribe(next => {
        const id  = next.get('id');
@@ -25,13 +26,16 @@ export class ProductUpdateComponent implements OnInit {
     }, error => {
     }, () => {
     })
+    this.categorys=this.productService.categorys;
   }
 
   ngOnInit(): void {
   }
 
   submit() {
-    this.productService.updateById(this.productForm.value).subscribe();
-    this.route.navigateByUrl('/product/list');
+    this.productService.updateById(this.productForm.value).subscribe(now=>{
+      this.route.navigateByUrl('/product/list');
+    });
+
   }
 }
