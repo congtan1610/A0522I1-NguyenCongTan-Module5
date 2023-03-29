@@ -16,7 +16,7 @@
     <td>{{product.price}}</td>
     <td>{{product.description}}</td>
     <td><button class="btn btn-sm btn-primary" [routerLink]="['/product/edit',product.id]" >Update</button>
-    <button class="btn btn-sm btn-danger"  (click)="check(product.id)">Delete</button></td>
+    <button class="btn btn-sm btn-danger"  (click)="check(product.id,product.name)">Delete</button></td>
   </tr>
   </tbody>
 </table>

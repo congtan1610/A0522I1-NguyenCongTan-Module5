@@ -31,31 +31,11 @@
       <td>{{customer.address}}</td>
       <td>
         <a class="btn btn-outline-success btn-sm" role="button"
-           aria-disabled="true" routerLink="/updateCustomer">Edit</a>
+           aria-disabled="true">Edit</a>
         <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
-                id="btn_del">Delete
+                id="btn_del" (click)="check(customer.id)">Delete
         </button>
-<!-- Modal Delete-->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Customer</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <b>Are you sure you want to delete {{customer.name}}?</b>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="del"
-                        (click)="deleteById(customer.id)">Delete
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
       </td>
     </tr>
   </table>
@@ -66,5 +46,25 @@
         <a class="btn btn-primary btn-sm" role="button" aria-disabled="true">1</a>
       </span>
     <a class="btn btn-primary btn-sm" role="button" aria-disabled="true">Next</a>
+  </div>
+</div>
+<!-- Modal Delete-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Customer</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <b *ngIf="customerDel!=null">Are you sure you want to delete {{customerDel.name}}?</b>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="del"
+                (click)="deleteById(customerDel.id)">Delete
+        </button>
+      </div>
+    </div>
   </div>
 </div>

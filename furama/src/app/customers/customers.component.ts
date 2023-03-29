@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Customer} from "../model/customer";
 import {CustomerService} from "../service/customer.service";
-
 @Component({
   selector: 'app-customers',
   templateUrl: './customers.component.html',
@@ -9,6 +8,7 @@ import {CustomerService} from "../service/customer.service";
 })
 export class CustomersComponent implements OnInit {
   customers:Array<Customer>=[];
+  customerDel:Customer;
   constructor(private customerService:CustomerService) {
     this.customers=this.customerService.getAll();
   }
@@ -19,5 +19,9 @@ export class CustomersComponent implements OnInit {
   }
   deleteById(id: number) {
     this.customers.splice(this.customers.indexOf(this.finById(id)),1);
+  }
+
+  check(id: number) {
+    this.customerDel=this.finById(id);
   }
 }

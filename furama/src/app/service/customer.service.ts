@@ -25,9 +25,16 @@ export class CustomerService {
     name:'La B',
     phone:'9894337243',
     type:'Platinum'
-  }]
+  }];
+  types:Array<string>=['Gold','Platinum','Silver','Member','Diamond'];
   constructor() { }
   getAll():Array<Customer>{
     return this.customers;
+  }
+  getType():Array<string>{
+    return this.types;
+  }
+  findById(value:number){
+    return this.customers.filter(customer=>(customer.id==value))[0];
   }
 }

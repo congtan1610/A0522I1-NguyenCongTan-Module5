@@ -10,8 +10,12 @@ import {Router} from "@angular/router";
 })
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
-
-  constructor(private productService: ProductService,private route:Router) {
+  constructor(private productService: ProductService, private route: Router) {
+    this.productService.getAll().subscribe(next =>
+      {
+        this.products = next
+      }
+    );
 
   }
 
@@ -20,12 +24,15 @@ export class ProductListComponent implements OnInit {
   }
 
   getAll() {
-    this.products = this.productService.getAll();
+    return  this.products;
   }
 
-  check(id) {
-    if(confirm('Are you sure you want to delete ' +this.productService.findById(id).name+'?')==true){
-      this.productService.deleteById(id);
+  check(id,name) {
+    if (confirm('Are you sure you want to delete ' +name  + '?') == true) {
+      this.productService.deleteById(id).subscribe(next=>{
+        location.reload();
+      });
+
     }
   }
 }
