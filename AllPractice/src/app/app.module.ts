@@ -15,6 +15,8 @@ import {ProductListComponent} from './product-list/product-list.component';
 import {ProductUpdateComponent} from './product-update/product-update.component';
 import {ProductDeleteComponent} from './product-delete/product-delete.component';
 import {HttpClientModule} from "@angular/common/http";
+import {ImageGalleryModule} from "./image-gallery/image-gallery.module";
+import {GalleryConfig} from "./image-gallery/token";
 
 @NgModule({
   declarations: [
@@ -34,9 +36,9 @@ import {HttpClientModule} from "@angular/common/http";
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,ImageGalleryModule
   ],
-  providers: [],
+  providers: [{provide: GalleryConfig, useValue: 3}],
   bootstrap: [AppComponent]
 })
 export class AppModule {
