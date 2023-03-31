@@ -1,76 +1,86 @@
 <div class="content">
-  <form [formGroup] ="newForm" (ngSubmit)="submit(newForm)">
-      <legend>New Customer</legend>
-        <table width=70%>
-          <tr>
-            <td>
-              <div class="mb-3 ">
-                <label class="form-label">Name</label>
-                <input  type="text" class="form-control" formControlName="name" placeholder="Enter your name">
-              </div>
-            </td>
-            <td>
-              <div class="mb-3">
-                <label class="form-label">Customer Type</label>
-                <select class="form-select" formControlName="type">
-                  <option *ngFor="let type of types" [value]="type" [text]="type"></option>
-                </select>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="mb-3 ">
-                <label class="form-label" >Date Of Birth</label>
-                <input  type="date" class="form-control" formControlName="dateOfBirth">
-              </div>
-            </td>
-            <td>
-              <div class="mb-3 ">
-                <label class="form-label" >Gender</label>
-                <select class="form-select"  formControlName="gender">
-                  <option value='Nam' >Nam</option>
-                  <option value='Nữ' >Nữ</option>
-                </select>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="mb-3 ">
-                <label class="form-label">Id Card</label>
-                <input  type="text" class="form-control" placeholder="Enteryour id card" formControlName="idCard">
-              </div>
-            </td>
-            <td>
-              <div class="mb-3 ">
-                <label class="form-label">Phone Number</label>
-                <input  type="text" class="form-control" placeholder="Enter your phone number" formControlName="phone">
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="mb-3 ">
-                <label class="form-label">Email</label>
-                <input  type="text" class="form-control" placeholder="Enter your email" formControlName="email">
-              </div>
-            </td>
-            <td>
-              <div class="mb-3 ">
-                <label class="form-label">Address</label>
-                <input  type="text" class="form-control" placeholder="Enter your address" formControlName="address">
-              </div>
-            </td>
-          </tr>
-          <tr >
-            <td></td>
-            <td >
-              <button type="submit" class="btn btn-primary"
-                      aria-disabled="true" style="float: right" >Add</button>
-              <input type="button" class="btn btn-primary" style="float: right;margin-right: 10px;" onclick="history.back()" value="Back"/>
-            </td>
-          </tr>
-        </table>
+  <form [formGroup]="newForm" (ngSubmit)="submit(newForm)">
+    <b>New Customer</b>
+    <table width=70%>
+      <tr>
+        <td>
+          <div class="mb-3 ">
+            <label class="form-label">Name</label>
+            <span *ngIf="newForm.controls.name.hasError('required')&&newForm.controls.name.touched">(cannot be left blank)</span>
+            <input type="text" class="form-control" formControlName="name" placeholder="Enter your name">
+          </div>
+        </td>
+        <td>
+          <div class="mb-3">
+            <label class="form-label">Customer Type</label>
+            <span *ngIf="newForm.controls.type.hasError('required')&&newForm.controls.type.touched">(cannot be left blank)</span>
+            <select class="form-select" formControlName="type">
+              <option *ngFor="let type of types" [value]="type" [text]="type"></option>
+            </select>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="mb-3 ">
+            <label class="form-label">Date Of Birth</label>
+            <span *ngIf="newForm.controls.dateOfBirth.hasError('required')&&newForm.controls.dateOfBirth.touched">(cannot be left blank)</span>
+            <input type="date" class="form-control" formControlName="dateOfBirth">
+          </div>
+        </td>
+        <td>
+          <div class="mb-3 ">
+            <label class="form-label">Gender</label>
+            <span *ngIf="newForm.controls.gender.hasError('required')&&newForm.controls.gender.touched">(cannot be left blank)</span>
+            <select class="form-select" formControlName="gender">
+              <option value='Nam'>Nam</option>
+              <option value='Nữ'>Nữ</option>
+            </select>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="mb-3 ">
+            <label class="form-label">Id Card</label>
+            <span *ngIf="newForm.controls.idCard.hasError('required')&&newForm.controls.idCard.touched">(cannot be left blank)</span>
+            <input type="text" class="form-control" placeholder="Enteryour id card" formControlName="idCard">
+          </div>
+        </td>
+        <td>
+          <div class="mb-3 ">
+            <label class="form-label">Phone Number</label>
+            <span *ngIf="newForm.controls.phone.hasError('required')&&newForm.controls.phone.touched">(cannot be left blank)</span>
+            <input type="text" class="form-control" placeholder="Enter your phone number" formControlName="phone">
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="mb-3 ">
+            <label class="form-label">Email</label>
+            <span *ngIf="newForm.controls.email.hasError('required')&&newForm.controls.email.touched">(cannot be left blank)</span>
+            <input type="text" class="form-control" placeholder="Enter your email" formControlName="email">
+          </div>
+        </td>
+        <td>
+          <div class="mb-3 ">
+            <label class="form-label">Address</label>
+            <span *ngIf="newForm.controls.address.hasError('required')&&newForm.controls.address.touched">(cannot be left blank)</span>
+            <input type="text" class="form-control" placeholder="Enter your address" formControlName="address">
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <button type="submit" class="btn btn-primary"
+                  aria-disabled="true" style="float: right">Add
+          </button>
+          <input type="button" class="btn btn-primary" style="float: right;margin-right: 10px;" onclick="history.back()"
+                 value="Back"/>
+        </td>
+      </tr>
+    </table>
   </form>
 </div>

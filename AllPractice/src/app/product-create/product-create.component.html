@@ -21,7 +21,7 @@
       <td>Hãng</td>
       <td>
         <select formControlName="category">
-          <option *ngFor="let cate of categorys" [value]="cate">{{cate}}</option>
+          <option *ngFor="let cate of categorys" [ngValue]="cate">{{cate.name}}</option>
         </select>
       </td>
     </tr>

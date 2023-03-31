@@ -1,4 +1,4 @@
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Component, OnInit} from '@angular/core';
 import {CustomerService} from "../service/customer.service";
 import {Router} from "@angular/router";
@@ -17,19 +17,19 @@ export class CreateCustomerComponent implements OnInit {
 
   ngOnInit(): void {
     this.newForm = new FormGroup({
-      name: new FormControl(''),
-      type: new FormControl(''),
-      dateOfBirth: new FormControl(''),
-      gender: new FormControl(''),
-      idCard: new FormControl(''),
-      phone: new FormControl(''),
-      email: new FormControl(''),
-      address: new FormControl('')
+      name: new FormControl('',[Validators.required]),
+      type: new FormControl('',[Validators.required]),
+      dateOfBirth: new FormControl('',[Validators.required]),
+      gender: new FormControl('',[Validators.required]),
+      idCard: new FormControl('',[Validators.required]),
+      phone: new FormControl('',[Validators.required]),
+      email: new FormControl('',[Validators.required]),
+      address: new FormControl('',[Validators.required])
     },[])
   }
 
   submit(newForm: FormGroup) {
-    if (this.newForm.value) {
+    if (this.newForm.valid) {
       this.customerService.getAll().push(newForm.value);
       this.route.navigateByUrl('/listCustomer');
     }

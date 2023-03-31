@@ -2,14 +2,16 @@ import {Injectable} from '@angular/core';
 import {Product} from "../model/product";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
+import {CategoryService} from "./category.service";
+import {Category} from "../model/category";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  products: Product[];
-  categorys:string[]=['Apple','Samsung'];
-  constructor( private httpClient:HttpClient) {
+  categorys:Category[];
+  constructor( private httpClient:HttpClient,private categoryService:CategoryService) {
+    this.categoryService.getAll().subscribe(next=>this.categorys=next);
   }
 
   getAll():Observable<Product[]> {

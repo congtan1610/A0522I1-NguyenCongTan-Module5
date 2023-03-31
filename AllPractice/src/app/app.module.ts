@@ -10,13 +10,13 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {TimelinesComponent} from './timelines/timelines.component';
 import {YoutubePlaylistComponent} from './youtube-playlist/youtube-playlist.component';
 import {YoutubePlayerComponent} from './youtube-player/youtube-player.component';
-import {ProductCreateComponent} from './product-create/product-create.component';
-import {ProductListComponent} from './product-list/product-list.component';
-import {ProductUpdateComponent} from './product-update/product-update.component';
-import {ProductDeleteComponent} from './product-delete/product-delete.component';
 import {HttpClientModule} from "@angular/common/http";
 import {ImageGalleryModule} from "./image-gallery/image-gallery.module";
 import {GalleryConfig} from "./image-gallery/token";
+import {ProductModule} from "./product/product.module";
+import {CategoryModule} from "./category/category.module";
+import {SharedModule} from "./shared/shared.module";
+
 
 @NgModule({
   declarations: [
@@ -26,17 +26,15 @@ import {GalleryConfig} from "./image-gallery/token";
     TodoComponent,
     TimelinesComponent,
     YoutubePlaylistComponent,
-    YoutubePlayerComponent,
-    ProductCreateComponent,
-    ProductListComponent,
-    ProductUpdateComponent,
-    ProductDeleteComponent
+    YoutubePlayerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule,ImageGalleryModule
+    HttpClientModule,
+    ImageGalleryModule,
+    SharedModule
   ],
   providers: [{provide: GalleryConfig, useValue: 3}],
   bootstrap: [AppComponent]
