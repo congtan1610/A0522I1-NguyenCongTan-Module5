@@ -1,0 +1,158 @@
+{
+  "facilitys": [
+    {
+      "id": 1,
+      "name": "OCEAN SUITE",
+      "type": {
+        "id": 1,
+        "name": "Villa"
+      },
+      "area": 85.8,
+      "cost": 223,
+      "image": "../../assets/image/home.jpg",
+      "maxPeople": 20,
+      "rentType": {
+        "id": 1,
+        "name": "Day"
+      },
+      "standardRoom": "asx",
+      "descriptionOtherConvenience": "adsd",
+      "poolArea": "21",
+      "numberOfFloors": "12",
+      "facilityFree": null
+    },
+    {
+      "id": 2,
+      "name": "OCEAN STUDIO SUITE",
+      "type": {
+        "id": 2,
+        "name": "House"
+      },
+      "area": 40.1,
+      "cost": 223,
+      "image": "../../assets/image/home.jpg",
+      "maxPeople": 20,
+      "rentType": {
+        "id": 2,
+        "name": "Month"
+      },
+      "standardRoom": "asx",
+      "descriptionOtherConvenience": "adsd",
+      "poolArea": null,
+      "numberOfFloors": "12",
+      "facilityFree": null
+    },
+    {
+      "id": 3,
+      "name": "OCEAN DELUXE",
+      "type": {
+        "id": 1,
+        "name": "Villa"
+      },
+      "area": 43.7,
+      "cost": 223,
+      "image": "../../assets/image/home.jpg",
+      "maxPeople": 20,
+      "rentType": {
+        "id": 1,
+        "name": "Day"
+      },
+      "standardRoom": "asx",
+      "descriptionOtherConvenience": "adsd",
+      "poolArea": "21",
+      "numberOfFloors": "12",
+      "facilityFree": null
+    },
+    {
+      "id": 4,
+      "name": "LAGOON SUPERIOR",
+      "type": {
+        "id": 2,
+        "name": "House"
+      },
+      "area": 40.1,
+      "cost": 223,
+      "image": "../../assets/image/home.jpg",
+      "maxPeople": 20,
+      "rentType": {
+        "id": 3,
+        "name": "Year"
+      },
+      "standardRoom": "asx",
+      "descriptionOtherConvenience": "adsd",
+      "poolArea": null,
+      "numberOfFloors": "12",
+      "facilityFree": null
+    },
+    {
+      "id": 5,
+      "name": "GARDEN SUPERIOR",
+      "type": {
+        "id": 3,
+        "name": "Room"
+      },
+      "area": 40.1,
+      "cost": 223,
+      "image": "../../assets/image/home.jpg",
+      "maxPeople": 20,
+      "rentType": {
+        "id": 1,
+        "name": "Day"
+      },
+      "standardRoom": null,
+      "descriptionOtherConvenience": null,
+      "poolArea": null,
+      "numberOfFloors": null,
+      "facilityFree": "sdsad"
+    },
+    {
+      "id": 6,
+      "name": "tan cong ds",
+      "type": {
+        "id": 1,
+        "name": "Villa"
+      },
+      "area": "12",
+      "cost": "12",
+      "image": "../../assets/image/home.jpg",
+      "maxPeople": "12",
+      "rentType": {
+        "id": 1,
+        "name": "Day"
+      },
+      "standardRoom": "asx",
+      "descriptionOtherConvenience": "adsd",
+      "poolArea": "21",
+      "numberOfFloors": "12",
+      "facilityFree": null
+    }
+  ],
+  "rentTypes": [
+    {
+      "id": 1,
+      "name": "Day"
+    },
+    {
+      "id": 2,
+      "name": "Month"
+    },
+    {
+      "id": 3,
+      "name": "Year"
+    }
+  ],
+  "types": [
+    {
+      "id": 1,
+      "name": "Villa"
+    },
+    {
+      "id": 2,
+      "name": "House"
+    },
+    {
+      "id": 3,
+      "name": "Room"
+    }
+  ]
+}

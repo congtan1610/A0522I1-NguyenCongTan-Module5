@@ -31,7 +31,7 @@
       <td>{{customer.address}}</td>
       <td>
         <a class="btn btn-outline-success btn-sm" role="button"
-           aria-disabled="true">Edit</a>
+           aria-disabled="true" (click)="edit(customer.id)">Edit</a>
         <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
                 id="btn_del" (click)="check(customer.id)">Delete

@@ -14,6 +14,7 @@ import {UpdateCustomerComponent} from './update-customer/update-customer.compone
 import {ContractsComponent} from './contracts/contracts.component';
 import {CreateContractComponent} from './create-contract/create-contract.component';
 import {NgModule} from "@angular/core";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import {NgModule} from "@angular/core";
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

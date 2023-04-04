@@ -8,7 +8,7 @@ export class CustomerService {
   customers:Array<Customer>=[{
     id:1,
     address:'DN',
-    dateOfBirth:'12/12/2001',
+    dateOfBirth:'2001-12-12',
     email:'abc@gmail.com',
     gender:'Nam',
     idCard:'1232321321',
@@ -18,11 +18,21 @@ export class CustomerService {
   },{
     id:2,
     address:'DN',
-    dateOfBirth:'12/12/2001',
+    dateOfBirth:'2001-12-12',
     email:'abc@gmail.com',
     gender:'Nam',
     idCard:'1232321321',
     name:'La B',
+    phone:'9894337243',
+    type:'Platinum'
+  },{
+    id:2,
+    address:'DN',
+    dateOfBirth:'2001-12-12',
+    email:'abc@gmail.com',
+    gender:'Nữ',
+    idCard:'1232321321',
+    name:'La C',
     phone:'9894337243',
     type:'Platinum'
   }];

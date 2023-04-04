@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Customer} from "../model/customer";
 import {CustomerService} from "../service/customer.service";
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-customers',
   templateUrl: './customers.component.html',
@@ -9,7 +10,8 @@ import {CustomerService} from "../service/customer.service";
 export class CustomersComponent implements OnInit {
   customers:Array<Customer>=[];
   customerDel:Customer;
-  constructor(private customerService:CustomerService) {
+
+  constructor(private customerService:CustomerService,private route:Router) {
     this.customers=this.customerService.getAll();
   }
   ngOnInit(): void {
@@ -23,5 +25,9 @@ export class CustomersComponent implements OnInit {
 
   check(id: number) {
     this.customerDel=this.finById(id);
+  }
+
+  edit(id: number) {
+      this.route.navigateByUrl("/updateCustomer/"+id);
   }
 }

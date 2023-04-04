@@ -1,296 +1,96 @@
-<div class="content">
-  <b class="text-lg-center">Add Facility</b>
-  <br>
-  <!-- Button trigger modal -->
-  <div style="height: 340px">
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#VillaModal">Villa
-    </button>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#HouseModal">House
-    </button>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#RoomModal">Room
-    </button>
+<form [formGroup]="FacilityForm" (ngSubmit)="submit()" height="700px">
+  <div class="modal-body">
+    <table width="100%" >
+      <tr>
+        <td>
+          <div class="mb-3 ">
+            <label class="form-label">Facility Type</label>
+            <select class="form-select" formControlName="type" (change)="change($event)">
+              <option [ngValue]="null" [disabled]="true" >Choose your facility type</option>
+              <option *ngFor="let type of types" [ngValue]="type">{{type.name}}</option>
+            </select>
+          </div>
+        </td>
+        <td>
+          <div class="mb-3 ">
+            <label class="form-label">Name</label><span *ngIf="FacilityForm.controls.name.hasError('required')&&FacilityForm.controls.name.touched">as</span>
+            <input type="text" class="form-control" formControlName="name" placeholder="Enter your name">
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="mb-3">
+            <label class="form-label">Rent Type</label>
+            <select class="form-select" formControlName="rentType" >
+              <option [ngValue]="null" [disabled]="true" >Choose your rent type</option>
+              <option *ngFor="let typer of rentTypes" [ngValue]="typer">{{typer.name}}</option>
+            </select>
+          </div>
+        </td>
+        <td>
+          <div class="mb-3 ">
+            <label class="form-label">Area</label>
+            <input type="text" class="form-control" formControlName="area" placeholder="Enter your area">
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="mb-3 ">
+            <label class="form-label">Cost</label>
+            <input type="text" class="form-control" formControlName="cost" placeholder="Enter your cost">
+          </div>
+        </td>
+        <td>
+          <div class="mb-3 ">
+            <label class="form-label">Max People</label>
+            <input type="text" class="form-control" formControlName="maxPeople" placeholder="Enter your people">
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="mb-3 " *ngIf="typeChoose==1||typeChoose==2">
+            <label class="form-label">Standard Room</label>
+            <input type="text" class="form-control" placeholder="Enter your Standard Room" formControlName="standardRoom"
+                   >
+          </div>
+        </td>
+        <td>
+          <div class="mb-3 " *ngIf="typeChoose==1||typeChoose==2">
+            <label class="form-label">Description Other Convenience</label>
+            <input type="text" class="form-control" formControlName="descriptionOtherConvenience"
+                   placeholder="Enter your Description Other Convenience" >
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="mb-3 " *ngIf="typeChoose==1||typeChoose==2">
+            <label class="form-label">Number Of Floors</label>
+            <input type="text" class="form-control" formControlName="numberOfFloors"
+                   placeholder="Enter your Number Of Floors">
+          </div>
+        </td>
+        <td>
+          <div class="mb-3 " *ngIf="typeChoose==1">
+            <label class="form-label">Pool Area</label>
+            <input type="text" class="form-control" formControlName="poolArea" placeholder="Enter your Pool Area">
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="mb-3 " *ngIf="typeChoose==3">
+            <label class="form-label">Facility Free</label>
+            <input type="text" class="form-control" formControlName="facilityFree"
+                   placeholder="Enter your Facility Free">
+          </div>
+        </td>
+      </tr>
+    </table>
+    <button style="position: relative;left: 90%" class="btn btn-outline-success" type="submit">Add</button>
+    <button style="position: relative;left: 80%" class="btn btn-outline-primary" type="button" onclick="history.back()">Back</button>
   </div>
-  <!-- Modal -->
-  <div class="modal fade " id="VillaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="VillaModalLabel">New Facility Villa</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <form>
-          <div class="modal-body">
-            <table width="100%">
-              <tr>
-                <td>
-                  <div class="mb-3 ">
-                    <label class="form-label">Facility Type</label>
-                    <input type="text" disabled value="Villa" class="form-control">
-                    <select hidden class="form-select">
-                      <option>.....</option>
-                    </select>
-                  </div>
-                </td>
-                <td>
-                  <div class="mb-3 ">
-                    <label class="form-label">Name</label>
-                    <input type="text" class="form-control" placeholder="Enter your name">
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="mb-3">
-                    <label class="form-label">Rent Type</label>
-                    <select class="form-select">
-                      <option>...</option>
-                    </select>
-                  </div>
-                </td>
-                <td>
-                  <div class="mb-3 ">
-                    <label class="form-label">Area</label>
-                    <input type="text" class="form-control" placeholder="Enter your area">
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="mb-3 ">
-                    <label class="form-label">Cost</label>
-                    <input type="text" class="form-control" placeholder="Enter your cost">
-                  </div>
-                </td>
-                <td>
-                  <div class="mb-3 ">
-                    <label class="form-label">Max People</label>
-                    <input type="text" class="form-control" placeholder="Enter your people">
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="mb-3 ">
-                    <label class="form-label">Standard Room</label>
-                    <input type="text" class="form-control"
-                           placeholder="Enter your Standard Room">
-                  </div>
-                </td>
-                <td>
-                  <div class="mb-3 ">
-                    <label class="form-label">Description Other Convenience</label>
-                    <input type="text" class="form-control"
-                           placeholder="Enter your Description Other Convenience">
-
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="mb-3 ">
-                    <label class="form-label">Pool Area</label>
-                    <input type="text" class="form-control" placeholder="Enter your Pool Area">
-                  </div>
-                </td>
-                <td>
-                  <div class="mb-3 ">
-                    <label class="form-label">Number Of Floors</label>
-                    <input type="text" class="form-control"
-                           placeholder="Enter your Number Of Floors">
-
-                  </div>
-                </td>
-              </tr>
-            </table>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Add</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  <div class="modal fade" id="HouseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="HouseModalLabel">New Facility House</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <form>
-          <div class="modal-body">
-            <table width="100%">
-              <tr>
-                <td>
-                  <div class="mb-3 ">
-                    <label class="form-label">Facility Type</label>
-                    <input type="text" value="House" disabled class="form-control"/>
-                    <select hidden class="form-select">
-                      <option>...</option>
-                    </select>
-                  </div>
-                </td>
-                <td>
-                  <div class="mb-3 ">
-                    <label class="form-label">Name</label>
-                    <input type="text" class="form-control" placeholder="Enter your name">
-
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="mb-3">
-                    <label class="form-label">Rent Type</label>
-                    <select class="form-select" >
-                      <option>...</option>
-                    </select>
-                  </div>
-                </td>
-                <td>
-                  <div class="mb-3 ">
-                    <label class="form-label">Area</label>
-                    <input type="text" class="form-control" placeholder="Enter your area">
-
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="mb-3 ">
-                    <label class="form-label">Cost</label>
-                    <input type="text" class="form-control" placeholder="Enter your cost">
-
-                  </div>
-                </td>
-                <td>
-                  <div class="mb-3 ">
-                    <label class="form-label">Max People</label>
-                    <input type="text" class="form-control" placeholder="Enter your people">
-
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="mb-3 ">
-                    <label class="form-label">Standard Room</label>
-                    <input type="text" class="form-control"
-                           placeholder="Enter your Standard Room">
-
-                  </div>
-                </td>
-                <td>
-                  <div class="mb-3 ">
-                    <label class="form-label">Description Other Convenience</label>
-                    <input type="text" class="form-control"
-                           placeholder="Enter your Description Other Convenience">
-
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="mb-3 ">
-                    <label class="form-label">Number Of Floors</label>
-                    <input type="text" class="form-control"
-                           placeholder="Enter your Number Of Floors">
-
-                  </div>
-                </td>
-              </tr>
-            </table>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Add</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  <div class="modal fade" id="RoomModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="RoomModalLabel">New Facility Room</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <form>
-          <div class="modal-body">
-            <table width="100%">
-              <tr>
-                <td>
-                  <div class="mb-3 ">
-                    <label class="form-label">Facility Type</label>
-                    <input type="text" disabled value="Room" class="form-control">
-                    <select hidden class="form-select">
-                      <option>...</option>
-                    </select>
-                  </div>
-                </td>
-                <td>
-                  <div class="mb-3 ">
-                    <label class="form-label">Name</label>
-                    <input type="text" class="form-control" placeholder="Enter your name">
-
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="mb-3">
-                    <label class="form-label">Rent Type</label>
-                    <select class="form-select">
-                      <option>...</option>
-                    </select>
-                  </div>
-                </td>
-                <td>
-                  <div class="mb-3 ">
-                    <label class="form-label">Area</label>
-                    <input type="text" class="form-control" placeholder="Enter your area">
-
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="mb-3 ">
-                    <label class="form-label">Cost</label>
-                    <input type="text" class="form-control" placeholder="Enter your cost">
-
-                  </div>
-                </td>
-                <td>
-                  <div class="mb-3 ">
-                    <label class="form-label">Max People</label>
-                    <input type="text" class="form-control" placeholder="Enter your people">
-
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="mb-3 ">
-                    <label class="form-label">Facility Free</label>
-                    <input type="text" class="form-control"
-                           placeholder="Enter your Facility Free">
-
-                  </div>
-                </td>
-              </tr>
-            </table>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Add</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
-
+</form>

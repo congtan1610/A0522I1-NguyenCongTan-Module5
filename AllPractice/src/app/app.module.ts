@@ -16,6 +16,8 @@ import {GalleryConfig} from "./image-gallery/token";
 import {ProductModule} from "./product/product.module";
 import {CategoryModule} from "./category/category.module";
 import {SharedModule} from "./shared/shared.module";
+import {NavBarComponent} from "./shared/nav-bar/nav-bar.component";
+import {NavbarComponent} from "../../../angular-hackernews-app/src/app/navbar/navbar.component";
 
 
 @NgModule({

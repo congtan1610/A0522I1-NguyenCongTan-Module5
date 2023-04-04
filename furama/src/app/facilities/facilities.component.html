@@ -4,16 +4,24 @@
   <button type="button" class="btn btn-outline-primary btn-ho"><i
     class="fa-solid fa-arrow-up"></i></button>
 </a>
+<form style="float: left;margin-left: 20px" [formGroup]="Search" (ngSubmit)="submit()">
+  <table>
+    <tr>
+      <td><input class="form-control"  formControlName="name" type="text" placeholder="enter your name"/></td>
+      <td><button type="submit" class="btn btn-primary" >Search</button></td>
+    </tr>
+  </table>
+</form>
 <a routerLink="/createFacilities" class="b"><button type="button" class="btn btn-primary">Add Facilities</button></a>
+<b *ngIf="mess" style="color: red">{{mess}}</b>
 <div class="list" id="home">
-
   <div class=" card item" *ngFor="let facility of facilitys">
     <div class="btn-hi" >
-      <a  routerLink="/upFacilities">
+      <a  routerLink="/upFacilities/{{facility.id}}">
         <button type="button" class="btn btn-success">Edit</button>
       </a>
       <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-              data-bs-target="#exampleModal">Delete
+              data-bs-target="#exampleModal" (click)="check_del(facility.id)">Delete
       </button>
     </div>
     <img src="{{facility.image}}" class="card-img-top" alt="..." width="288px" height="200px"
@@ -34,12 +42,12 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <b id="result"></b>
+        <b *ngIf="fac">Do you want to delete {{fac.name}}</b>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="del"
-                onclick="del(this.value)">Delete
+                (click)="del(id_del)">Delete
         </button>
       </div>
     </div>

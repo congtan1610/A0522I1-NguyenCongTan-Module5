@@ -12,7 +12,7 @@ import {CreateContractComponent} from "./create-contract/create-contract.compone
 
 const routes: Routes = [
   {
-    path: 'upFacilities',
+    path: 'upFacilities/:id',
     component: EditFacilitiesComponent
   }, {
     path: '',
@@ -30,7 +30,7 @@ const routes: Routes = [
     path: 'createCustomer',
     component: CreateCustomerComponent
   }, {
-    path: 'updateCustomer',
+    path: 'updateCustomer/:id',
     component: UpdateCustomerComponent
   }, {
     path: 'listContract',
