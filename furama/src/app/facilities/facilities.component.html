@@ -15,7 +15,7 @@
 <a routerLink="/createFacilities" class="b"><button type="button" class="btn btn-primary">Add Facilities</button></a>
 <b *ngIf="mess" style="color: red">{{mess}}</b>
 <div class="list" id="home">
-  <div class=" card item" *ngFor="let facility of facilitys">
+  <div class=" card item" *ngFor="let facility of facilitys | paginate:{itemsPerPage:3, currentPage: p}" >
     <div class="btn-hi" >
       <a  routerLink="/upFacilities/{{facility.id}}">
         <button type="button" class="btn btn-success">Edit</button>
@@ -33,7 +33,7 @@
         src="https://img.icons8.com/material-outlined/20/null/info--v1.png"/>Know more</a>
     </div>
   </div>
-</div>
+</div> <pagination-controls (pageChange)="p=$event"></pagination-controls>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">

@@ -1,0 +1,13 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "name": "Cong Tan",
+      "team": "Nhóm 1",
+      "topic": "asdsa",
+      "teacher": "La A",
+      "email": "congtan12@gmail.com",
+      "phone": "0123456789"
+    }
+  ]
+}

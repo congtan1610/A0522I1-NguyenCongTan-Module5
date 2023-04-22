@@ -16,16 +16,17 @@
         <td>
           <div class="mb-3 ">
             <label class="form-label">Name</label>
-              <span *ngIf="editForm.controls.name.hasError('required')&&editForm.controls.name.touched">(cannot be left blank)</span>
+            <span *ngIf="editForm.controls.name.hasError('required')&&editForm.controls.name.touched">(cannot be left blank)</span>
             <input type="text" class="form-control" formControlName="name" placeholder="Enter your name">
           </div>
         </td>
         <td>
           <div class="mb-3">
             <label class="form-label">Customer Type</label>
-            <span *ngIf="editForm.controls.type.hasError('required')&&editForm.controls.type.touched">(cannot be left blank)</span>
-            <select class="form-select" formControlName="type">
-              <option *ngFor="let type of types" [value]="type" [text]="type"></option>
+            <span *ngIf="editForm.controls.typeCus.hasError('required')&&editForm.controls.typeCus.touched">(cannot be left blank)</span>
+            <select class="form-select" formControlName="typeCus" [compareWith]="compare">
+              <option [ngValue]="null" [selected]="true" [disabled]="true">Choose your type customer</option>
+              <option *ngFor="let type of types" [ngValue]="type" >{{type.name}}</option>
             </select>
           </div>
         </td>
@@ -34,8 +35,9 @@
         <td>
           <div class="mb-3 ">
             <label class="form-label">Date Of Birth</label>
-            <span *ngIf="editForm.controls.dateOfBirth.hasError('required')&&editForm.controls.dateOfBirth.touched">(cannot be left blank)</span>
-            <input type="date" class="form-control" formControlName="dateOfBirth">
+              <span *ngIf="editForm.controls.dateOfBirth.hasError('required')&&editForm.controls.dateOfBirth.touched">(cannot be left blank)</span>
+            <span *ngIf="editForm.controls.dateOfBirth.hasError('err1')&&editForm.controls.dateOfBirth.touched">(under 18 years old)</span>
+            <input type="date"  class="form-control" formControlName="dateOfBirth">
           </div>
         </td>
         <td>
@@ -43,6 +45,7 @@
             <label class="form-label">Gender</label>
             <span *ngIf="editForm.controls.gender.hasError('required')&&editForm.controls.gender.touched">(cannot be left blank)</span>
             <select class="form-select" formControlName="gender">
+              <option [value]="null" [selected]="true" disabled>Choose your gender</option>
               <option value='Nam'>Nam</option>
               <option value='Nữ'>Nữ</option>
             </select>
@@ -70,13 +73,14 @@
           <div class="mb-3 ">
             <label class="form-label">Email</label>
             <span *ngIf="editForm.controls.email.hasError('required')&&editForm.controls.email.touched">(cannot be left blank)</span>
+            <span *ngIf="editForm.controls.email.hasError('email')&&editForm.controls.email.touched">(format)</span>
             <input type="text" class="form-control" placeholder="Enter your email" formControlName="email">
           </div>
         </td>
         <td>
           <div class="mb-3 ">
             <label class="form-label">Address</label>
-              <span *ngIf="editForm.controls.address.hasError('required')&&editForm.controls.address.touched">(cannot be left blank)</span>
+            <span *ngIf="editForm.controls.address.hasError('required')&&editForm.controls.address.touched">(cannot be left blank)</span>
             <input type="text" class="form-control" placeholder="Enter your address" formControlName="address">
           </div>
         </td>
@@ -85,7 +89,7 @@
         <td></td>
         <td>
           <button type="submit" class="btn btn-primary"
-                  aria-disabled="true" style="float: right">Add
+                  aria-disabled="true" style="float: right">Save
           </button>
           <input type="button" class="btn btn-primary" style="float: right;margin-right: 10px;" onclick="history.back()"
                  value="Back"/>

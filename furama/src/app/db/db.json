@@ -104,27 +104,6 @@
       "poolArea": null,
       "numberOfFloors": null,
       "facilityFree": "sdsad"
-    },
-    {
-      "id": 6,
-      "name": "tan cong ds",
-      "type": {
-        "id": 1,
-        "name": "Villa"
-      },
-      "area": "12",
-      "cost": "12",
-      "image": "../../assets/image/home.jpg",
-      "maxPeople": "12",
-      "rentType": {
-        "id": 1,
-        "name": "Day"
-      },
-      "standardRoom": "asx",
-      "descriptionOtherConvenience": "adsd",
-      "poolArea": "21",
-      "numberOfFloors": "12",
-      "facilityFree": null
     }
   ],
   "rentTypes": [
@@ -153,6 +132,86 @@
     {
       "id": 3,
       "name": "Room"
+    }
+  ],
+  "customers": [
+    {
+      "id": 1,
+      "name": "La A",
+      "typeCus": {
+        "id": 4,
+        "name": "Diamond"
+      },
+      "dateOfBirth": "2003-01-09",
+      "gender": "Nam",
+      "idCard": "1232321321",
+      "phone": "9894337243",
+      "email": "abc@gmail.com",
+      "address": "DN"
+    },
+    {
+      "id": 2,
+      "address": "DN",
+      "dateOfBirth": "2001-12-12",
+      "email": "abc@gmail.com",
+      "gender": "Nam",
+      "idCard": "1232321321",
+      "name": "La A",
+      "phone": "9894337243",
+      "typeCus": {
+        "id": 1,
+        "name": "Platinum"
+      }
+    },
+    {
+      "name": "A Vừ",
+      "typeCus": {
+        "id": 2,
+        "name": "Gold"
+      },
+      "dateOfBirth": "2023-04-18",
+      "gender": "Nam",
+      "idCard": "12312312",
+      "phone": "2131232",
+      "email": "congtan125@gmail.com",
+      "address": "574 Trưng Vương",
+      "id": 3
+    },
+    {
+      "id": 4,
+      "name": "hoa",
+      "typeCus": {
+        "id": 2,
+        "name": "Gold"
+      },
+      "dateOfBirth": "2000-06-06",
+      "gender": "Nữ",
+      "idCard": "21312",
+      "phone": "312312",
+      "email": "congtan125@gmail.com",
+      "address": "574 Trưng Vương"
+    }
+  ],
+  "typeCus": [
+    {
+      "id": 1,
+      "name": "Platinum"
+    },
+    {
+      "id": 2,
+      "name": "Gold"
+    },
+    {
+      "id": 3,
+      "name": "Silver"
+    },
+    {
+      "id": 4,
+      "name": "Diamond"
+    },
+    {
+      "id": 5,
+      "name": "Member"
     }
   ]
 }

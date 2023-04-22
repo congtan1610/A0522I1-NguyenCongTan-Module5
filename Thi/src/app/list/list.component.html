@@ -1,0 +1,177 @@
+<div class="content">
+  <p style="font-size: larger;"><b>Danh sách sinh viên</b></p>
+  <div>
+    <input type="text" class="border-1 rounded-1 w-25 " placeholder="Nhập tên muốn tìm" [value]="nameF"
+           (change)="changNameF($event.target)">
+    <button class="btn btn-outline-primary btn-sm" (click)="findByName()">Tìm</button>
+    <button style="margin-left: 90%" type="button" class="btn btn-outline-primary btn-sm" routerLink="/add">Thêm
+    </button>
+  </div>
+  <div style="height: 300px">
+    <table class="table">
+      <tbody>
+      <tr>
+        <th scope="col">Stt</th>
+        <th scope="col">Mã Sv</th>
+        <th scope="col">Tên Sv</th>
+        <th scope="col">Tên Nhóm</th>
+        <th scope="col">Tên đề tài</th>
+        <th scope="col">GV hướng dẫn</th>
+        <th scope="col">email</th>
+        <th scope="col">sdt</th>
+        <th scope="col">chức năng</th>
+      </tr>
+<!--      <tr *ngIf="list.length==0">-->
+<!--        <td colspan="9">Not found</td>-->
+<!--      </tr>-->
+      <tr *ngFor="let student of list,let i=index ">
+        <td>{{i + 1}}</td>
+        <td>{{student.id}}</td>
+        <td>{{student.name}}</td>
+        <td>{{student.team}}</td>
+        <td>{{student.topic}}</td>
+        <td>{{student.teacher}}</td>
+        <td>{{student.email}}</td>
+        <td>{{student.phone}}</td>
+        <td>
+          <button type="button" class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
+                  data-bs-target="#edit" (click)="edit(student.id)">Sửa
+          </button>
+          <button type="button" class="btn btn-outline-danger btn-sm"
+                  id="btn_del" data-bs-toggle="modal" data-bs-target="#delete" (click)="check(student.id)">Xóa
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class=" d-flex justify-content-center">
+    <nav aria-label="Page navigation example" style="width: 100%">
+      <ul class="pagination d-flex justify-content-center">
+        <li class="page-item"><a class="page-link" (click)="firtPage()">Đầu</a></li>
+        <li class="page-item"><a class="page-link" (click)="prviousPage()">Trước</a></li>
+        <li class="page-item col-md-1 col-2  px-0">
+          <div class="input-group">
+            <input type="number" min="1" [max]="totalPagination" class="form-control text-right rounded-0"
+                   aria-label="Username"
+                   aria-describedby="basic-addon1" [value]="indexPagination" (change)="findPaginnation($event.target)"/>
+            <div class="input-group-prepend">
+              <span class="input-group-text rounded-0">{{indexPagination}}/{{totalPagination}}</span>
+            </div>
+          </div>
+        </li>
+        <li class="page-item"><a class="page-link" (click)="nextPage()">Sau</a></li>
+        <li class="page-item"><a class="page-link" (click)="lastPage()">Cuối</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<!-- Modal  edit-->
+<div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content"> <form [formGroup]="editForm" (ngSubmit)="submit(editForm)">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Cập nhật sinh viên</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="content">
+            <table>
+              <tr>
+                <td>
+                  <div class="mb-3 ">
+                    <label class="form-label">Ma sv</label>
+                    <input type="text" class="form-control" formControlName="id" [attr.disabled]="true">
+                  </div>
+                </td>
+                <td>
+                  <div class="mb-3 ">
+                    <label class="form-label">Ten Sv</label>
+                    <span *ngIf="editForm.controls.name.hasError('required')&&editForm.controls.name.touched">(Không được để trống)</span>
+                    <span *ngIf="editForm.controls.name.hasError('pattern')&&editForm.controls.name.touched">(Không được chứa kí tự đặc biệt)</span>
+                    <input type="text" class="form-control" formControlName="name">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="mb-3 ">
+                    <label class="form-label">Ten de tai</label>
+                    <span *ngIf="editForm.controls.topic.hasError('required')&&editForm.controls.topic.touched">(Không được để trống)</span>
+                    <input type="text" class="form-control" formControlName="topic">
+                  </div>
+                </td>
+                <td>
+                  <div class="mb-3 ">
+                    <label class="form-label">GV huong dan</label>
+                    <select class="form-select" formControlName="teacher">
+                      <option value='La A'>La A</option>
+                      <option value='La B'>La B</option>
+                      <option value='La C'>La C</option>
+                      <option value='La D'>La D</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="mb-3 ">
+                    <label class="form-label">email</label>
+                    <span *ngIf="editForm.controls.email.hasError('required')&&editForm.controls.email.touched">(không được để trống)</span>
+                    <span *ngIf="editForm.controls.email.hasError('email')&&editForm.controls.email.touched">(sai định dạng)</span>
+                    <input type="text" class="form-control" formControlName="email">
+                  </div>
+                </td>
+                <td>
+                  <div class="mb-3 ">
+                    <label class="form-label">Sdt</label>
+                    <span *ngIf="editForm.controls.phone.hasError('required')&&editForm.controls.phone.touched">(không được để trống)</span>
+                    <span *ngIf="editForm.controls.phone.hasError('pattern')&&editForm.controls.phone.touched">(số điện thoại phải có 10 đến 12 số)</span>
+                    <input type="text" class="form-control" formControlName="phone">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="mb-3"><label class="form-label">Nhom</label>
+                    <select class="form-select" formControlName="team">
+                      <option value='Nhóm 1'>Nhóm 1</option>
+                      <option value='Nhóm 2'>Nhóm 2</option>
+                      <option value='Nhóm 3'>Nhóm 3</option>
+                    </select>
+                  </div>
+                </td>
+                <td>
+                </td>
+              </tr>
+            </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Trở lại</button>
+        <button type="submit"  class="btn btn-primary" data-bs-dismiss="modal">Lưu</button>
+      </div></form>
+    </div>
+  </div>
+</div>
+<!-- Modal  edit-->
+<div class="modal fade" id="delete" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="deleteModalLabel">Cảnh báo</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="content">
+          <b>Bạn có chắc muốn xóa {{nameDel}}</b>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Trở lại</button>
+        <button type="button"  class="btn btn-primary" (click)="delete()" data-bs-dismiss="modal">Xóa</button>
+      </div>
+    </div>
+  </div>
+</div>

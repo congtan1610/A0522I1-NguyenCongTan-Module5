@@ -1,4 +1,4 @@
-<form [formGroup]="FacilityForm" (ngSubmit)="submit()" height="700px">
+<form [formGroup]="FacilityForm" (ngSubmit)="submit(FacilityForm)" height="700px">
   <div class="modal-body">
     <table width="100%" >
       <tr>
@@ -13,7 +13,7 @@
         </td>
         <td>
           <div class="mb-3 ">
-            <label class="form-label">Name</label><span *ngIf="FacilityForm.controls.name.hasError('required')&&FacilityForm.controls.name.touched">as</span>
+            <label class="form-label">Name</label>
             <input type="text" class="form-control" formControlName="name" placeholder="Enter your name">
           </div>
         </td>
@@ -53,8 +53,7 @@
         <td>
           <div class="mb-3 " *ngIf="typeChoose==1||typeChoose==2">
             <label class="form-label">Standard Room</label>
-            <input type="text" class="form-control" placeholder="Enter your Standard Room" formControlName="standardRoom"
-                   >
+            <input type="text" class="form-control" placeholder="Enter your Standard Room" formControlName="standardRoom">
           </div>
         </td>
         <td>

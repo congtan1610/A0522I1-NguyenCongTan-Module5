@@ -1,11 +1,16 @@
 <div class="content">
   <p style="font-size: larger;"><b>List Customer</b></p>
-  <form style="float: left;margin-left: 20px">
-    <input name="nameCustomer" type="text" placeholder="enter your name"/>
-    <input type="submit" class="btn btn-primary" role="button" aria-disabled="true" value="Search"/>
+  <form style="float: left;margin-left: 20px" [formGroup]="Search" (ngSubmit)="submit()">
+    <table>
+      <tr>
+        <td><input class="form-control"  formControlName="name" type="text" placeholder="enter your name"/></td>
+        <td><button type="submit" class="btn btn-primary" >Search</button></td>
+      </tr>
+    </table>
   </form>
   <a class="btn btn-primary" role="button" aria-disabled="true"
-     style="float: right;margin-right: 20px;margin-bottom: 10px" routerLink="/createCustomer">Add New</a>
+     style="float: right;margin-right: 20px;margin-bottom: 10px" routerLink="/createCustomer">Add New</a><br><br>
+  <b *ngIf="mess" style="color: red">{{mess}}</b>
   <table class="table table-striped">
     <tr>
       <th>No</th>
@@ -19,11 +24,11 @@
       <th>Address</th>
       <th>Action</th>
     </tr>
-    <tr *ngFor="let customer of customers,let i=index">
+    <tr *ngFor="let customer of customers| paginate:{itemsPerPage:3, currentPage: p},let i=index ">
       <td>{{i + 1}}</td>
       <td>{{customer.name}}</td>
-      <td>{{customer.type}}</td>
-      <td>{{customer.dateOfBirth}}</td>
+      <td>{{customer.typeCus.name}}</td>
+      <td>{{customer.dateOfBirth|date:"dd/MM/yyyy"}}</td>
       <td>{{customer.gender}}</td>
       <td>{{customer.idCard}}</td>
       <td>{{customer.phone}}</td>
@@ -39,15 +44,7 @@
       </td>
     </tr>
   </table>
-  <!--    phan trang-->
-  <div style="margin-top: 50px">
-    <a class="btn btn-primary btn-sm" role="button" aria-disabled="true">Previous</a>
-    <span>
-        <a class="btn btn-primary btn-sm" role="button" aria-disabled="true">1</a>
-      </span>
-    <a class="btn btn-primary btn-sm" role="button" aria-disabled="true">Next</a>
-  </div>
-</div>
+</div> <pagination-controls (pageChange)="p=$event"></pagination-controls>
 <!-- Modal Delete-->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">

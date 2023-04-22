@@ -1,50 +1,47 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Customer} from "../model/customer";
+import {Observable} from "rxjs";
+import {Facility} from "../model/facility";
+import {RentType} from "../model/rent-type";
+import {Type} from "../model/type";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {TypeCus} from "../model/type-cus";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
-  customers:Array<Customer>=[{
-    id:1,
-    address:'DN',
-    dateOfBirth:'2001-12-12',
-    email:'abc@gmail.com',
-    gender:'Nam',
-    idCard:'1232321321',
-    name:'La A',
-    phone:'9894337243',
-    type:'Platinum'
-  },{
-    id:2,
-    address:'DN',
-    dateOfBirth:'2001-12-12',
-    email:'abc@gmail.com',
-    gender:'Nam',
-    idCard:'1232321321',
-    name:'La B',
-    phone:'9894337243',
-    type:'Platinum'
-  },{
-    id:2,
-    address:'DN',
-    dateOfBirth:'2001-12-12',
-    email:'abc@gmail.com',
-    gender:'Nữ',
-    idCard:'1232321321',
-    name:'La C',
-    phone:'9894337243',
-    type:'Platinum'
-  }];
-  types:Array<string>=['Gold','Platinum','Silver','Member','Diamond'];
-  constructor() { }
-  getAll():Array<Customer>{
-    return this.customers;
+  constructor(private httpClient: HttpClient) {
   }
-  getType():Array<string>{
-    return this.types;
+
+  ngOnInit(): void {
   }
-  findById(value:number){
-    return this.customers.filter(customer=>(customer.id==value))[0];
+
+  getAll(): Observable<Customer[]> {
+    return this.httpClient.get<Customer[]>("http://localhost:3000/customers");
+  }
+
+  getTypeCus(): Observable<TypeCus[]> {
+    return this.httpClient.get<TypeCus[]>("http://localhost:3000/typeCus");
+  }
+
+  addNew(cus: Customer): Observable<any> {
+    return this.httpClient.post("http://localhost:3000/customers", cus);
+  }
+
+  delete(id: Number): Observable<any> {
+    return this.httpClient.delete("http://localhost:3000/customers/" + id);
+  }
+
+  findById(id: number): Observable<Customer> {
+    return this.httpClient.get<Customer>("http://localhost:3000/customers/" + id);
+  }
+
+  putById(cus: Customer): Observable<any> {
+    return this.httpClient.put("http://localhost:3000/customers/" + cus.id, cus);
+  }
+
+  findByName(name: String): Observable<Customer[]> {
+    return this.httpClient.get<Customer[]>("http://localhost:3000/customers?name_like=" + name);
   }
 }

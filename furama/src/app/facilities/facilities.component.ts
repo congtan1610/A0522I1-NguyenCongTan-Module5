@@ -17,6 +17,7 @@ export class FacilitiesComponent implements OnInit {
   Search: FormGroup = new FormGroup({
     name: new FormControl()
   })
+  p: number;
 
   constructor(private facilityService: FacilityService) {
     this.facilityService.getAll().subscribe(next => this.facilitys = next);

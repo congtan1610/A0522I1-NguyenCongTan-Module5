@@ -1,3 +1,5 @@
+import {TypeCus} from "./type-cus";
+
 export interface Customer {
   id:number,
   name:string,
@@ -6,6 +8,6 @@ export interface Customer {
   idCard:string,
   phone:string,
   email:string,
-  type:string,
+  typeCus:TypeCus,
   address:string
 }

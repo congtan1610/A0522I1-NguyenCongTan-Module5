@@ -1,0 +1,83 @@
+<div class="content">
+  <form [formGroup]="editForm" (ngSubmit)="submit(editForm)">
+    <b>Update Student</b>
+    <table width=70%>
+      <tr>
+        <td>
+          <div class="mb-3 ">
+            <label class="form-label">Ma sv</label>
+            <input type="text" class="form-control" formControlName="id" [attr.disabled]="true">
+          </div>
+        </td>
+        <td><div class="mb-3 ">
+          <label class="form-label">Ten Sv</label>
+          <span *ngIf="editForm.controls.name.hasError('required')&&editForm.controls.name.touched">(Không được để trống)</span>
+          <span *ngIf="editForm.controls.name.hasError('pattern')&&editForm.controls.name.touched">(Không được chứa kí tự đặc biệt)</span>
+          <input type="text" class="form-control" formControlName="name" >
+        </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="mb-3 ">
+            <label class="form-label">Ten de tai</label>
+            <span *ngIf="editForm.controls.topic.hasError('required')&&editForm.controls.topic.touched">(Không được để trống)</span>
+            <input type="text" class="form-control" formControlName="topic" >
+          </div>
+        </td>
+        <td>
+          <div class="mb-3 ">
+            <label class="form-label">GV huong dan</label>
+            <select class="form-select" formControlName="teacher" >
+              <option value='La A'>La A</option>
+              <option value='La B'>La B</option>
+              <option value='La C'>La C</option>
+              <option value='La D'>La D</option>
+            </select>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="mb-3 ">
+            <label class="form-label">email</label>
+            <span *ngIf="editForm.controls.email.hasError('required')&&editForm.controls.email.touched">(không được để trống)</span>
+            <span *ngIf="editForm.controls.email.hasError('email')&&editForm.controls.email.touched">(sai định dạng)</span>
+            <input type="text" class="form-control" formControlName="email" >
+          </div>
+        </td>
+        <td>
+          <div class="mb-3 ">
+            <label class="form-label">Sdt</label>
+            <span *ngIf="editForm.controls.phone.hasError('required')&&editForm.controls.phone.touched">(không được để trống)</span>
+            <span *ngIf="editForm.controls.phone.hasError('pattern')&&editForm.controls.phone.touched">(số điện thoại phải có 10 đến 12 số)</span>
+            <input type="text" class="form-control" formControlName="phone">
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="mb-3" ><label class="form-label">Nhom</label>
+            <select class="form-select" formControlName="team" >
+              <option value='Nhóm 1'>Nhóm 1</option>
+              <option value='Nhóm 2'>Nhóm 2</option>
+              <option value='Nhóm 3'>Nhóm 3</option>
+            </select>
+          </div>
+        </td>
+        <td>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <button type="submit" class="btn btn-primary"
+                  aria-disabled="true" style="float: right">Luu
+          </button>
+          <input type="button" class="btn btn-primary" style="float: right;margin-right: 10px;" onclick="history.back()"
+                 value="Thoat"/>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>

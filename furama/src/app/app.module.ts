@@ -14,7 +14,8 @@ import {UpdateCustomerComponent} from './update-customer/update-customer.compone
 import {ContractsComponent} from './contracts/contracts.component';
 import {CreateContractComponent} from './create-contract/create-contract.component';
 import {NgModule} from "@angular/core";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from "@angular/common/http";
+import {NgxPaginationModule} from "ngx-pagination";
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
